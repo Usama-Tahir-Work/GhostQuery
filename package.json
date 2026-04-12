@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/Usama-Tahir-Work.github.io/GhostQuery.git",
+  "homepage": "https://github.com/Usama-Tahir-Work.github.io/GhostQuery",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
