@@ -70,7 +70,11 @@ export default function Header({ onSearchResults, onClearSearch }) {
             size="small"
             placeholder="Search encrypted data (min 3 chars)…"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => {
+              const val = e.target.value;
+              setSearchTerm(val);
+              if (!val.trim()) handleClear();
+            }}
             onKeyDown={handleKeyDown}
             sx={{ width: 280 }}
             InputProps={{

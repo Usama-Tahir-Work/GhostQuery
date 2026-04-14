@@ -70,14 +70,17 @@ export default function App() {
   /* ── Search callbacks ──────────────────────────────── */
   const handleSearchResults = useCallback((data) => {
     setSearchCount((c) => c + 1);
+    setIsSearchResult(true);
     if (data) {
-      setIsSearchResult(true);
       setSearchMeta(data);
       setDisplayList(data.results || []);
-      showSnack(
-        `Database-level encrypted search returned ${data.totalResults} result(s)`,
-        data.totalResults > 0 ? 'success' : 'info'
-      );
+      
+      const count = data.results?.length || 0;
+      if (count > 0) {
+        showSnack(`Found ${count} encrypted records matching your search.`);
+      } else {
+        showSnack('No matches found. Clear search to see all records.', 'info');
+      }
     } else {
       showSnack('Search failed', 'error');
     }
